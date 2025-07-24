@@ -1,0 +1,1701 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CineVerse | Premium Streaming Platform</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      :root {
+        --primary: #ff4d4d;
+        --primary-dark: #e60000;
+        --secondary: #1a1a2e;
+        --dark: #16213e;
+        --darker: #0f172a;
+        --light: #e2e8f0;
+        --gray: #94a3b8;
+        --gradient: linear-gradient(135deg, #ff4d4d 0%, #9c27b0 100%);
+        --glass: rgba(255, 255, 255, 0.05);
+        --glass-border: rgba(255, 255, 255, 0.1);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        background-color: var(--darker);
+        color: var(--light);
+        overflow-x: hidden;
+      }
+
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: var(--dark);
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: var(--primary);
+        border-radius: 4px;
+      }
+
+      /* Header/Navbar */
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 1rem 5%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 1000;
+        background: rgba(10, 10, 20, 0.8);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--glass-border);
+        transition: all 0.3s ease;
+      }
+
+      header.scrolled {
+        padding: 0.5rem 5%;
+        background: rgba(5, 5, 15, 0.95);
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: white;
+        text-decoration: none;
+      }
+
+      .logo i {
+        color: var(--primary);
+        font-size: 2rem;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+      }
+
+      .nav-links a {
+        color: var(--gray);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s;
+        position: relative;
+      }
+
+      .nav-links a:hover,
+      .nav-links a.active {
+        color: white;
+      }
+
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--primary);
+        transition: width 0.3s;
+      }
+
+      .nav-links a:hover::after,
+      .nav-links a.active::after {
+        width: 100%;
+      }
+
+      .search-bar {
+        display: flex;
+        align-items: center;
+        background: var(--glass);
+        border-radius: 50px;
+        padding: 0.5rem 1rem;
+        border: 1px solid var(--glass-border);
+        transition: all 0.3s;
+      }
+
+      .search-bar:focus-within {
+        border-color: var(--primary);
+        box-shadow: 0 0 15px rgba(255, 77, 77, 0.3);
+      }
+
+      .search-bar input {
+        background: transparent;
+        border: none;
+        outline: none;
+        color: white;
+        width: 200px;
+        padding: 0.3rem;
+      }
+
+      .search-bar i {
+        color: var(--gray);
+        cursor: pointer;
+      }
+
+      .user-actions {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+      }
+
+      .user-actions .btn {
+        padding: 0.5rem 1.5rem;
+        border-radius: 50px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+
+      .btn-login {
+        background: transparent;
+        border: 1px solid var(--primary);
+        color: var(--primary);
+      }
+
+      .btn-login:hover {
+        background: var(--primary);
+        color: white;
+      }
+
+      .btn-signup {
+        background: var(--gradient);
+        border: none;
+        color: white;
+        box-shadow: 0 4px 15px rgba(255, 77, 77, 0.4);
+      }
+
+      .btn-signup:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(255, 77, 77, 0.6);
+      }
+
+      .user-profile {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        overflow: hidden;
+        cursor: pointer;
+        border: 2px solid var(--primary);
+      }
+
+      .user-profile img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* Hero Section */
+      .hero {
+        height: 100vh;
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+        margin-top: 80px;
+      }
+
+      .hero-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+            rgba(10, 10, 20, 0.7),
+            rgba(10, 10, 20, 0.9)
+          ),
+          url("https://source.unsplash.com/random/1920x1080/?movie,theater")
+            no-repeat center center/cover;
+        z-index: -1;
+      }
+
+      .hero-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 5rem 2rem;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .hero-tag {
+        background: var(--gradient);
+        width: fit-content;
+        padding: 0.5rem 1.5rem;
+        border-radius: 50px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .hero-tag i {
+        font-size: 1.2rem;
+      }
+
+      .hero-title {
+        font-size: 4rem;
+        font-weight: 800;
+        line-height: 1.1;
+        margin-bottom: 1.5rem;
+        background: linear-gradient(to right, white, var(--gray));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .hero-description {
+        max-width: 600px;
+        font-size: 1.1rem;
+        line-height: 1.6;
+        color: var(--gray);
+        margin-bottom: 2rem;
+      }
+
+      .hero-meta {
+        display: flex;
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .hero-meta-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.9rem;
+        color: var(--gray);
+      }
+
+      .hero-meta-item i {
+        color: var(--primary);
+      }
+
+      .hero-actions {
+        display: flex;
+        gap: 1.5rem;
+      }
+
+      .btn-hero {
+        padding: 1rem 2.5rem;
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: 1.1rem;
+        cursor: pointer;
+        transition: all 0.3s;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .btn-play {
+        background: var(--primary);
+        color: white;
+        border: none;
+        box-shadow: 0 4px 20px rgba(255, 77, 77, 0.5);
+      }
+
+      .btn-play:hover {
+        background: var(--primary-dark);
+        transform: translateY(-3px);
+        box-shadow: 0 6px 25px rgba(255, 77, 77, 0.7);
+      }
+
+      .btn-watchlist {
+        background: var(--glass);
+        color: white;
+        border: 1px solid var(--glass-border);
+        backdrop-filter: blur(5px);
+      }
+
+      .btn-watchlist:hover {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: var(--primary);
+      }
+
+      /* Content Sections */
+      .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+
+      .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+      }
+
+      .section-title {
+        font-size: 1.8rem;
+        font-weight: 700;
+        position: relative;
+        padding-left: 1rem;
+      }
+
+      .section-title::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 4px;
+        background: var(--gradient);
+        border-radius: 2px;
+      }
+
+      .section-nav {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .section-nav-btn {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: var(--glass);
+        border: 1px solid var(--glass-border);
+        color: var(--gray);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+
+      .section-nav-btn:hover {
+        color: white;
+        border-color: var(--primary);
+        background: rgba(255, 77, 77, 0.2);
+      }
+
+      /* Movie Cards */
+      .movie-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 3rem;
+      }
+
+      .movie-card {
+        background: var(--dark);
+        border-radius: 10px;
+        overflow: hidden;
+        transition: all 0.3s;
+        position: relative;
+        cursor: pointer;
+        border: 1px solid var(--glass-border);
+      }
+
+      .movie-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        border-color: var(--primary);
+      }
+
+      .movie-card:hover .movie-poster img {
+        transform: scale(1.05);
+      }
+
+      .movie-card:hover .movie-actions {
+        opacity: 1;
+        bottom: 20px;
+      }
+
+      .movie-poster {
+        height: 300px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .movie-poster img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s;
+      }
+
+      .movie-rating {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background: rgba(0, 0, 0, 0.7);
+        padding: 0.3rem 0.7rem;
+        border-radius: 50px;
+        display: flex;
+        align-items: center;
+        gap: 0.3rem;
+        font-size: 0.9rem;
+        font-weight: 600;
+        z-index: 2;
+      }
+
+      .movie-rating i {
+        color: gold;
+        font-size: 0.8rem;
+      }
+
+      .movie-details {
+        padding: 1.2rem;
+      }
+
+      .movie-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .movie-meta {
+        display: flex;
+        justify-content: space-between;
+        color: var(--gray);
+        font-size: 0.9rem;
+      }
+
+      .movie-actions {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        padding: 0 1rem;
+        opacity: 0;
+        transition: all 0.3s;
+        z-index: 2;
+      }
+
+      .movie-action-btn {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: var(--primary);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s;
+        border: none;
+      }
+
+      .movie-action-btn:hover {
+        transform: scale(1.1);
+        background: var(--primary-dark);
+      }
+
+      /* Featured Section */
+      .featured {
+        background: linear-gradient(to right, var(--darker), var(--dark));
+        padding: 5rem 0;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .featured::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url("https://i.imgur.com/JmYQ7yX.png") no-repeat;
+        background-size: cover;
+        opacity: 0.03;
+        pointer-events: none;
+      }
+
+      .featured-movie {
+        display: flex;
+        gap: 3rem;
+        align-items: center;
+      }
+
+      .featured-poster {
+        flex: 0 0 350px;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        position: relative;
+      }
+
+      .featured-poster img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .featured-badge {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: var(--gradient);
+        padding: 0.5rem 1rem;
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      }
+
+      .featured-content {
+        flex: 1;
+      }
+
+      .featured-title {
+        font-size: 2.5rem;
+        font-weight: 800;
+        margin-bottom: 1rem;
+        background: linear-gradient(to right, white, var(--gray));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .featured-meta {
+        display: flex;
+        gap: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .featured-meta-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.9rem;
+        color: var(--gray);
+      }
+
+      .featured-meta-item i {
+        color: var(--primary);
+      }
+
+      .featured-description {
+        line-height: 1.7;
+        color: var(--gray);
+        margin-bottom: 2rem;
+      }
+
+      .featured-genres {
+        display: flex;
+        gap: 0.7rem;
+        flex-wrap: wrap;
+        margin-bottom: 2rem;
+      }
+
+      .genre-tag {
+        padding: 0.5rem 1rem;
+        background: var(--glass);
+        border-radius: 50px;
+        font-size: 0.8rem;
+        font-weight: 500;
+        border: 1px solid var(--glass-border);
+      }
+
+      .featured-actions {
+        display: flex;
+        gap: 1.5rem;
+      }
+
+      /* Categories */
+      .categories {
+        padding: 5rem 0;
+      }
+
+      .category-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .category-card {
+        height: 150px;
+        border-radius: 10px;
+        overflow: hidden;
+        position: relative;
+        cursor: pointer;
+        transition: all 0.3s;
+        border: 1px solid var(--glass-border);
+      }
+
+      .category-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      }
+
+      .category-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s;
+      }
+
+      .category-card:hover img {
+        transform: scale(1.1);
+      }
+
+      .category-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 1.5rem;
+      }
+
+      .category-title {
+        font-size: 1.3rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+      }
+
+      .category-count {
+        font-size: 0.9rem;
+        color: var(--gray);
+      }
+
+      /* Footer */
+      footer {
+        background: var(--secondary);
+        padding: 5rem 0 2rem;
+        position: relative;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 3rem;
+        margin-bottom: 3rem;
+      }
+
+      .footer-logo {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: white;
+        margin-bottom: 1.5rem;
+      }
+
+      .footer-logo i {
+        color: var(--primary);
+        font-size: 1.8rem;
+      }
+
+      .footer-about {
+        color: var(--gray);
+        line-height: 1.7;
+        margin-bottom: 1.5rem;
+      }
+
+      .social-links {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .social-link {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: var(--glass);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--gray);
+        transition: all 0.3s;
+      }
+
+      .social-link:hover {
+        color: white;
+        background: var(--primary);
+        transform: translateY(-3px);
+      }
+
+      .footer-heading {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+        position: relative;
+        padding-bottom: 0.5rem;
+      }
+
+      .footer-heading::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 50px;
+        height: 2px;
+        background: var(--primary);
+      }
+
+      .footer-links {
+        list-style: none;
+      }
+
+      .footer-links li {
+        margin-bottom: 0.8rem;
+      }
+
+      .footer-links a {
+        color: var(--gray);
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .footer-links a:hover {
+        color: white;
+      }
+
+      .footer-newsletter p {
+        color: var(--gray);
+        line-height: 1.7;
+        margin-bottom: 1.5rem;
+      }
+
+      .newsletter-form {
+        display: flex;
+        background: var(--glass);
+        border-radius: 50px;
+        overflow: hidden;
+        border: 1px solid var(--glass-border);
+      }
+
+      .newsletter-form input {
+        flex: 1;
+        background: transparent;
+        border: none;
+        outline: none;
+        padding: 0.8rem 1.2rem;
+        color: white;
+      }
+
+      .newsletter-form button {
+        background: var(--primary);
+        color: white;
+        border: none;
+        padding: 0 1.5rem;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+
+      .newsletter-form button:hover {
+        background: var(--primary-dark);
+      }
+
+      .footer-bottom {
+        text-align: center;
+        padding-top: 2rem;
+        border-top: 1px solid var(--glass-border);
+        color: var(--gray);
+        font-size: 0.9rem;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 1200px) {
+        .hero-title {
+          font-size: 3.5rem;
+        }
+
+        .featured-movie {
+          flex-direction: column;
+        }
+
+        .featured-poster {
+          flex: 0 0 auto;
+          width: 100%;
+          max-width: 500px;
+        }
+      }
+
+      @media (max-width: 992px) {
+        .nav-links {
+          display: none;
+        }
+
+        .hero-title {
+          font-size: 3rem;
+        }
+
+        .featured-title {
+          font-size: 2rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .hero-title {
+          font-size: 2.5rem;
+        }
+
+        .hero-actions {
+          flex-direction: column;
+          gap: 1rem;
+        }
+
+        .btn-hero {
+          width: 100%;
+          justify-content: center;
+        }
+
+        .movie-grid {
+          grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        }
+      }
+
+      @media (max-width: 576px) {
+        .hero-title {
+          font-size: 2rem;
+        }
+
+        .hero-meta {
+          flex-wrap: wrap;
+          gap: 1rem;
+        }
+
+        .section-title {
+          font-size: 1.5rem;
+        }
+
+        .footer-content {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Animation Classes */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .animate-fade {
+        animation: fadeIn 0.6s ease forwards;
+      }
+
+      .delay-1 {
+        animation-delay: 0.2s;
+      }
+
+      .delay-2 {
+        animation-delay: 0.4s;
+      }
+
+      .delay-3 {
+        animation-delay: 0.6s;
+      }
+
+      /* Custom Cursor */
+      .custom-cursor {
+        position: fixed;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: var(--primary);
+        mix-blend-mode: difference;
+        pointer-events: none;
+        z-index: 9999;
+        transform: translate(-50%, -50%);
+        transition: transform 0.1s;
+      }
+
+      .cursor-outline {
+        position: fixed;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 2px solid var(--primary);
+        pointer-events: none;
+        z-index: 9998;
+        transform: translate(-50%, -50%);
+        transition: all 0.2s ease-out;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Custom Cursor -->
+    <div class="custom-cursor"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- Header -->
+    <header id="header">
+      <a href="#" class="logo">
+        <i class="fas fa-film"></i>
+        <span>CineVerse</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#" class="active">Home</a>
+        <a href="#">Movies</a>
+        <a href="#">TV Shows</a>
+        <a href="#">Genres</a>
+        <a href="#">New Releases</a>
+      </div>
+
+      <div class="search-bar">
+        <input type="text" placeholder="Search movies..." />
+        <i class="fas fa-search"></i>
+      </div>
+
+      <div class="user-actions">
+        <button class="btn btn-login">Login</button>
+        <button class="btn btn-signup">Sign Up</button>
+        <div class="user-profile">
+          <img
+            src="https://randomuser.me/api/portraits/men/32.jpg"
+            alt="User"
+          />
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-content">
+        <div class="hero-tag animate-fade">
+          <i class="fas fa-fire"></i>
+          <span>TRENDING NOW</span>
+        </div>
+        <h1 class="hero-title animate-fade delay-1">
+          The Last Odyssey: Galactic War
+        </h1>
+        <p class="hero-description animate-fade delay-1">
+          In a distant future where humanity has colonized the galaxy, a rogue
+          AI threatens to exterminate all organic life. A team of elite soldiers
+          must embark on a suicide mission to save civilization.
+        </p>
+        <div class="hero-meta animate-fade delay-2">
+          <div class="hero-meta-item">
+            <i class="fas fa-star"></i>
+            <span>9.2/10</span>
+          </div>
+          <div class="hero-meta-item">
+            <i class="fas fa-calendar-alt"></i>
+            <span>2023</span>
+          </div>
+          <div class="hero-meta-item">
+            <i class="fas fa-clock"></i>
+            <span>2h 38m</span>
+          </div>
+          <div class="hero-meta-item">
+            <i class="fas fa-tag"></i>
+            <span>Sci-Fi, Action</span>
+          </div>
+        </div>
+        <div class="hero-actions animate-fade delay-3">
+          <button class="btn-hero btn-play">
+            <i class="fas fa-play"></i>
+            Watch Now
+          </button>
+          <button class="btn-hero btn-watchlist">
+            <i class="fas fa-plus"></i>
+            My List
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Popular Movies -->
+    <section class="container">
+      <div class="section-header">
+        <h2 class="section-title">Popular Movies</h2>
+        <div class="section-nav">
+          <button class="section-nav-btn">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="section-nav-btn">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="movie-grid">
+        <!-- Movie Card 1 -->
+        <div class="movie-card">
+          <div class="movie-poster">
+            <img
+              src="https://source.unsplash.com/random/300x450/?movie,action"
+              alt="Movie Poster"
+            />
+            <div class="movie-rating">
+              <i class="fas fa-star"></i>
+              <span>8.7</span>
+            </div>
+            <div class="movie-actions">
+              <button class="movie-action-btn">
+                <i class="fas fa-play"></i>
+              </button>
+              <button class="movie-action-btn">
+                <i class="fas fa-plus"></i>
+              </button>
+              <button class="movie-action-btn">
+                <i class="fas fa-info"></i>
+              </button>
+            </div>
+          </div>
+          <div class="movie-details">
+            <h3 class="movie-title">Shadow Protocol</h3>
+            <div class="movie-meta">
+              <span>2023</span>
+              <span>Action</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Movie Card 2 -->
+        <div class="movie-card">
+          <div class="movie-poster">
+            <img
+              src="https://source.unsplash.com/random/300x450/?movie,comedy"
+              alt="Movie Poster"
+            />
+            <div class="movie-rating">
+              <i class="fas fa-star"></i>
+              <span>7.9</span>
+            </div>
+            <div class="movie-actions">
+              <button class="movie-action-btn">
+                <i class="fas fa-play"></i>
+              </button>
+              <button class="movie-action-btn">
+                <i class="fas fa-plus"></i>
+              </button>
+              <button class="movie-action-btn">
+                <i class="fas fa-info"></i>
+              </button>
+            </div>
+          </div>
+          <div class="movie-details">
+            <h3 class="movie-title">Laugh Factory</h3>
+            <div class="movie-meta">
+              <span>2023</span>
+              <span>Comedy</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Movie Card 3 -->
+        <div class="movie-card">
+          <div class="movie-poster">
+            <img
+              src="https://source.unsplash.com/random/300x450/?movie,horror"
+              alt="Movie Poster"
+            />
+            <div class="movie-rating">
+              <i class="fas fa-star"></i>
+              <span>6.8</span>
+            </div>
+            <div class="movie-actions">
+              <button class="movie-action-btn">
+                <i class="fas fa-play"></i>
+              </button>
+              <button class="movie-action-btn">
+                <i class="fas fa-plus"></i>
+              </button>
+              <button class="movie-action-btn">
+                <i class="fas fa-info"></i>
+              </button>
+            </div>
+          </div>
+          <div class="movie-details">
+            <h3 class="movie-title">The Haunting</h3>
+            <div class="movie-meta">
+              <span>2023</span>
+              <span>Horror</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Movie Card 4 -->
+        <div class="movie-card">
+          <div class="movie-poster">
+            <img
+              src="https://source.unsplash.com/random/300x450/?movie,drama"
+              alt="Movie Poster"
+            />
+            <div class="movie-rating">
+              <i class="fas fa-star"></i>
+              <span>9.1</span>
+            </div>
+            <div class="movie-actions">
+              <button class="movie-action-btn">
+                <i class="fas fa-play"></i>
+              </button>
+              <button class="movie-action-btn">
+                <i class="fas fa-plus"></i>
+              </button>
+              <button class="movie-action-btn">
+                <i class="fas fa-info"></i>
+              </button>
+            </div>
+          </div>
+          <div class="movie-details">
+            <h3 class="movie-title">The Last Goodbye</h3>
+            <div class="movie-meta">
+              <span>2023</span>
+              <span>Drama</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Movie Card 5 -->
+        <div class="movie-card">
+          <div class="movie-poster">
+            <img
+              src="https://source.unsplash.com/random/300x450/?movie,sci-fi"
+              alt="Movie Poster"
+            />
+            <div class="movie-rating">
+              <i class="fas fa-star"></i>
+              <span>8.5</span>
+            </div>
+            <div class="movie-actions">
+              <button class="movie-action-btn">
+                <i class="fas fa-play"></i>
+              </button>
+              <button class="movie-action-btn">
+                <i class="fas fa-plus"></i>
+              </button>
+              <button class="movie-action-btn">
+                <i class="fas fa-info"></i>
+              </button>
+            </div>
+          </div>
+          <div class="movie-details">
+            <h3 class="movie-title">Cosmic Drift</h3>
+            <div class="movie-meta">
+              <span>2023</span>
+              <span>Sci-Fi</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Movie -->
+    <section class="featured">
+      <div class="container">
+        <div class="featured-movie">
+          <div class="featured-poster">
+            <img
+              src="https://source.unsplash.com/random/500x750/?movie,featured"
+              alt="Featured Movie"
+            />
+            <div class="featured-badge">
+              <i class="fas fa-crown"></i>
+              EDITOR'S CHOICE
+            </div>
+          </div>
+          <div class="featured-content">
+            <h2 class="featured-title">Midnight in Paris</h2>
+            <div class="featured-meta">
+              <div class="featured-meta-item">
+                <i class="fas fa-star"></i>
+                <span>8.9/10</span>
+              </div>
+              <div class="featured-meta-item">
+                <i class="fas fa-calendar-alt"></i>
+                <span>2023</span>
+              </div>
+              <div class="featured-meta-item">
+                <i class="fas fa-clock"></i>
+                <span>2h 15m</span>
+              </div>
+            </div>
+            <p class="featured-description">
+              A romantic comedy about a family traveling to the French capital
+              for business. The party includes a young engaged couple who are
+              forced to confront the illusion that a life different from their
+              own is better.
+            </p>
+            <div class="featured-genres">
+              <span class="genre-tag">Romance</span>
+              <span class="genre-tag">Comedy</span>
+              <span class="genre-tag">Drama</span>
+              <span class="genre-tag">Fantasy</span>
+            </div>
+            <div class="featured-actions">
+              <button class="btn-hero btn-play">
+                <i class="fas fa-play"></i>
+                Watch Now
+              </button>
+              <button class="btn-hero btn-watchlist">
+                <i class="fas fa-plus"></i>
+                My List
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trending Now -->
+    <section class="container">
+      <div class="section-header">
+        <h2 class="section-title">Trending Now</h2>
+        <div class="section-nav">
+          <button class="section-nav-btn">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="section-nav-btn">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="movie-grid">
+        <!-- Movie Card 6 -->
+        <div class="movie-card">
+          <div class="movie-poster">
+            <img
+              src="https://source.unsplash.com/random/300x450/?movie,adventure"
+              alt="Movie Poster"
+            />
+            <div class="movie-rating">
+              <i class="fas fa-star"></i>
+              <span>8.4</span>
+            </div>
+            <div class="movie-actions">
+              <button class="movie-action-btn">
+                <i class="fas fa-play"></i>
+              </button>
+              <button class="movie-action-btn">
+                <i class="fas fa-plus"></i>
+              </button>
+              <button class="movie-action-btn">
+                <i class="fas fa-info"></i>
+              </button>
+            </div>
+          </div>
+          <div class="movie-details">
+            <h3 class="movie-title">Lost Expedition</h3>
+            <div class="movie-meta">
+              <span>2023</span>
+              <span>Adventure</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Movie Card 7 -->
+        <div class="movie-card">
+          <div class="movie-poster">
+            <img
+              src="https://source.unsplash.com/random/300x450/?movie,thriller"
+              alt="Movie Poster"
+            />
+            <div class="movie-rating">
+              <i class="fas fa-star"></i>
+              <span>7.6</span>
+            </div>
+            <div class="movie-actions">
+              <button class="movie-action-btn">
+                <i class="fas fa-play"></i>
+              </button>
+              <button class="movie-action-btn">
+                <i class="fas fa-plus"></i>
+              </button>
+              <button class="movie-action-btn">
+                <i class="fas fa-info"></i>
+              </button>
+            </div>
+          </div>
+          <div class="movie-details">
+            <h3 class="movie-title">The Silent Witness</h3>
+            <div class="movie-meta">
+              <span>2023</span>
+              <span>Thriller</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Movie Card 8 -->
+        <div class="movie-card">
+          <div class="movie-poster">
+            <img
+              src="https://source.unsplash.com/random/300x450/?movie,animation"
+              alt="Movie Poster"
+            />
+            <div class="movie-rating">
+              <i class="fas fa-star"></i>
+              <span>9.0</span>
+            </div>
+            <div class="movie-actions">
+              <button class="movie-action-btn">
+                <i class="fas fa-play"></i>
+              </button>
+              <button class="movie-action-btn">
+                <i class="fas fa-plus"></i>
+              </button>
+              <button class="movie-action-btn">
+                <i class="fas fa-info"></i>
+              </button>
+            </div>
+          </div>
+          <div class="movie-details">
+            <h3 class="movie-title">Dreamscape</h3>
+            <div class="movie-meta">
+              <span>2023</span>
+              <span>Animation</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Movie Card 9 -->
+        <div class="movie-card">
+          <div class="movie-poster">
+            <img
+              src="https://source.unsplash.com/random/300x450/?movie,crime"
+              alt="Movie Poster"
+            />
+            <div class="movie-rating">
+              <i class="fas fa-star"></i>
+              <span>8.2</span>
+            </div>
+            <div class="movie-actions">
+              <button class="movie-action-btn">
+                <i class="fas fa-play"></i>
+              </button>
+              <button class="movie-action-btn">
+                <i class="fas fa-plus"></i>
+              </button>
+              <button class="movie-action-btn">
+                <i class="fas fa-info"></i>
+              </button>
+            </div>
+          </div>
+          <div class="movie-details">
+            <h3 class="movie-title">Underworld Syndicate</h3>
+            <div class="movie-meta">
+              <span>2023</span>
+              <span>Crime</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Movie Card 10 -->
+        <div class="movie-card">
+          <div class="movie-poster">
+            <img
+              src="https://source.unsplash.com/random/300x450/?movie,fantasy"
+              alt="Movie Poster"
+            />
+            <div class="movie-rating">
+              <i class="fas fa-star"></i>
+              <span>8.9</span>
+            </div>
+            <div class="movie-actions">
+              <button class="movie-action-btn">
+                <i class="fas fa-play"></i>
+              </button>
+              <button class="movie-action-btn">
+                <i class="fas fa-plus"></i>
+              </button>
+              <button class="movie-action-btn">
+                <i class="fas fa-info"></i>
+              </button>
+            </div>
+          </div>
+          <div class="movie-details">
+            <h3 class="movie-title">Realm of Magic</h3>
+            <div class="movie-meta">
+              <span>2023</span>
+              <span>Fantasy</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="categories">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Browse Categories</h2>
+          <div class="section-nav">
+            <button class="section-nav-btn">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="section-nav-btn">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="category-grid">
+          <!-- Category 1 -->
+          <div class="category-card">
+            <img
+              src="https://source.unsplash.com/random/400x300/?action,movie"
+              alt="Action"
+            />
+            <div class="category-overlay">
+              <h3 class="category-title">Action</h3>
+              <span class="category-count">342 Movies</span>
+            </div>
+          </div>
+
+          <!-- Category 2 -->
+          <div class="category-card">
+            <img
+              src="https://source.unsplash.com/random/400x300/?comedy,movie"
+              alt="Comedy"
+            />
+            <div class="category-overlay">
+              <h3 class="category-title">Comedy</h3>
+              <span class="category-count">278 Movies</span>
+            </div>
+          </div>
+
+          <!-- Category 3 -->
+          <div class="category-card">
+            <img
+              src="https://source.unsplash.com/random/400x300/?horror,movie"
+              alt="Horror"
+            />
+            <div class="category-overlay">
+              <h3 class="category-title">Horror</h3>
+              <span class="category-count">156 Movies</span>
+            </div>
+          </div>
+
+          <!-- Category 4 -->
+          <div class="category-card">
+            <img
+              src="https://source.unsplash.com/random/400x300/?drama,movie"
+              alt="Drama"
+            />
+            <div class="category-overlay">
+              <h3 class="category-title">Drama</h3>
+              <span class="category-count">412 Movies</span>
+            </div>
+          </div>
+
+          <!-- Category 5 -->
+          <div class="category-card">
+            <img
+              src="https://source.unsplash.com/random/400x300/?sci-fi,movie"
+              alt="Sci-Fi"
+            />
+            <div class="category-overlay">
+              <h3 class="category-title">Sci-Fi</h3>
+              <span class="category-count">189 Movies</span>
+            </div>
+          </div>
+
+          <!-- Category 6 -->
+          <div class="category-card">
+            <img
+              src="https://source.unsplash.com/random/400x300/?fantasy,movie"
+              alt="Fantasy"
+            />
+            <div class="category-overlay">
+              <h3 class="category-title">Fantasy</h3>
+              <span class="category-count">127 Movies</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-col">
+            <div class="footer-logo">
+              <i class="fas fa-film"></i>
+              <span>CineVerse</span>
+            </div>
+            <p class="footer-about">
+              CineVerse is a premium streaming platform that offers thousands of
+              movies and TV shows across all genres. Watch anytime, anywhere.
+            </p>
+            <div class="social-links">
+              <a href="#" class="social-link">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="#" class="social-link">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="#" class="social-link">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="#" class="social-link">
+                <i class="fab fa-youtube"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h3 class="footer-heading">Quick Links</h3>
+            <ul class="footer-links">
+              <li><a href="#">Home</a></li>
+              <li><a href="#">Movies</a></li>
+              <li><a href="#">TV Shows</a></li>
+              <li><a href="#">New Releases</a></li>
+              <li><a href="#">My List</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h3 class="footer-heading">Genres</h3>
+            <ul class="footer-links">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Comedy</a></li>
+              <li><a href="#">Horror</a></li>
+              <li><a href="#">Drama</a></li>
+              <li><a href="#">Sci-Fi</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h3 class="footer-heading">Company</h3>
+            <ul class="footer-links">
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">Contact</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms of Service</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h3 class="footer-heading">Newsletter</h3>
+            <p class="footer-newsletter">
+              Subscribe to our newsletter to receive updates on new releases and
+              special offers.
+            </p>
+            <form class="newsletter-form">
+              <input type="email" placeholder="Your Email" />
+              <button type="submit">
+                <i class="fas fa-paper-plane"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2023 CineVerse. All Rights Reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Header Scroll Effect
+      window.addEventListener("scroll", function () {
+        const header = document.getElementById("header");
+        if (window.scrollY > 50) {
+          header.classList.add("scrolled");
+        } else {
+          header.classList.remove("scrolled");
+        }
+      });
+
+      // Custom Cursor
+      const cursor = document.querySelector(".custom-cursor");
+      const cursorOutline = document.querySelector(".cursor-outline");
+
+      document.addEventListener("mousemove", function (e) {
+        cursor.style.left = e.clientX + "px";
+        cursor.style.top = e.clientY + "px";
+
+        cursorOutline.style.left = e.clientX + "px";
+        cursorOutline.style.top = e.clientY + "px";
+      });
+
+      // Cursor Hover Effects
+      const hoverElements = document.querySelectorAll(
+        "a, button, .movie-card, .category-card, .section-nav-btn, .social-link, .movie-action-btn"
+      );
+
+      hoverElements.forEach((element) => {
+        element.addEventListener("mouseenter", function () {
+          cursor.style.transform = "translate(-50%, -50%) scale(1.5)";
+          cursorOutline.style.transform = "translate(-50%, -50%) scale(1.3)";
+          cursor.style.opacity = "0.7";
+        });
+
+        element.addEventListener("mouseleave", function () {
+          cursor.style.transform = "translate(-50%, -50%) scale(1)";
+          cursorOutline.style.transform = "translate(-50%, -50%) scale(1)";
+          cursor.style.opacity = "1";
+        });
+      });
+
+      // Movie Card Hover Effect
+      const movieCards = document.querySelectorAll(".movie-card");
+
+      movieCards.forEach((card) => {
+        card.addEventListener("mousemove", function (e) {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+
+          card.style.setProperty("--mouse-x", `${x}px`);
+          card.style.setProperty("--mouse-y", `${y}px`);
+        });
+      });
+
+      // Simple Carousel Navigation (for demonstration)
+      const sectionNavs = document.querySelectorAll(".section-nav");
+
+      sectionNavs.forEach((nav) => {
+        const prevBtn = nav.querySelector(".fa-chevron-left").parentElement;
+        const nextBtn = nav.querySelector(".fa-chevron-right").parentElement;
+        const movieGrid = nav.closest(".section-header").nextElementSibling;
+
+        prevBtn.addEventListener("click", function () {
+          movieGrid.scrollBy({ left: -300, behavior: "smooth" });
+        });
+
+        nextBtn.addEventListener("click", function () {
+          movieGrid.scrollBy({ left: 300, behavior: "smooth" });
+        });
+      });
+
+      // Search Bar Focus Effect
+      const searchBar = document.querySelector(".search-bar");
+      const searchInput = searchBar.querySelector("input");
+
+      searchInput.addEventListener("focus", function () {
+        searchBar.style.borderColor = "var(--primary)";
+        searchBar.style.boxShadow = "0 0 15px rgba(255, 77, 77, 0.3)";
+      });
+
+      searchInput.addEventListener("blur", function () {
+        searchBar.style.borderColor = "var(--glass-border)";
+        searchBar.style.boxShadow = "none";
+      });
+    </script>
+  </body>
+</html>

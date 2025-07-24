@@ -1,334 +1,1108 @@
-<html>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <title>movie</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="moviecsss.css">
-   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	  <script>
+  <head>
+    <title>Prime Movies - Stream Unlimited Films</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background-color: #0c0b09;
+        color: #fff;
+        font-family: "Poppins", sans-serif;
+      }
 
-function validateForm() {
-  let x = document.forms["myForm"]["email"]["fname"].value;
-  if (x == "") {
-    alert("Name must be filled out");
-    return false;
-  }
-}
-</script>
-<script>
- function unn(){
- alert("currently unavalable");
- }
-</script>
-<script>
-function setCookie(cname,cvalue,exdays) {
-  const d = new Date();
-  d.setTime(d.getTime() + (exdays*24*60*60*1000));
-  let expires = "expires=" + d.toGMTString();
-  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-}
+      .navbar-default {
+        background: rgba(12, 11, 9, 0.9);
+        border-bottom: 1px solid rgba(205, 164, 94, 0.2);
+      }
 
-function getCookie(cname) {
-  let name = cname + "=";
-  let decodedCookie = decodeURIComponent(document.cookie);
-  let ca = decodedCookie.split(';');
-  for(let i = 0; i < ca.length; i++) {
-    let c = ca[i];
-    while (c.charAt(0) == ' ') {
-      c = c.substring(1);
-    }
-    if (c.indexOf(name) == 0) {
-      return c.substring(name.length, c.length);
-    }
-  }
-  return "";
-}
+      .navbar-default .navbar-brand {
+        color: #cda45e;
+        font-weight: 700;
+        font-size: 28px;
+        padding-left: 20px;
+      }
 
-setTimeout(function checkCookie() {
-  let user = getCookie("username");
-  if (user != "") {
-    alert("Welcome again " + user);
-  } else {
-     user = prompt("Please enter your name:","");
-     if (user != "" && user != null) {
-       setCookie("username", user, 30);
-     }
-  }
-},6000);
+      .navbar-default .navbar-nav > li > a {
+        color: #cda45e;
+      }
 
-</script>
-<script>
-function ll(){
-alert("plese login")
-}
-</script>
-<script>
-function pl(){
-alert("click here to login")
-}
-</script>
-<script>
-function onfunction() {
-  var x = document.getElementById("demo");
-  x.style.color = "red";
-}
-</script>
+      .navbar-default .navbar-toggle {
+        border-color: #cda45e;
+      }
 
-</head>
-<body onload="checkCookie()">
-<header>
-<nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button>
-      <a class="navbar-brand" href="#"><b class="mo">movie</b></a>
-    </div>
-	<ul class="nav navbar-nav navbar-center navbar-collapse">
-	     <li class="se"><a href="#car"><input type="text" name="search" placeholder="Search.." class="sea"></a></li>
-		 </ul>
-     <div class="collapse navbar-collapse" id="myNavbar">
-        <ul class="nav navbar-nav navbar-right">
-        <li><a href="#cars"><input type="button" data-toggle="modal" data-target="#myModal" value="login"class="button"></a></li>
-		  
-  
-		<li><a href="#tour"><input type="button" data-toggle="modal" data-target="#myModal1" value="singin"class="button"></a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span></a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
-</header>
-<!-- Modal -->
-     <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">login</h4>
+      .navbar-default .navbar-toggle .icon-bar {
+        background-color: #cda45e;
+      }
+
+      .navbar-default .navbar-toggle:focus,
+      .navbar-default .navbar-toggle:hover {
+        background-color: rgba(205, 164, 94, 0.1);
+      }
+
+      .button {
+        font-weight: 600;
+        font-size: 13px;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        display: inline-block;
+        padding: 12px 30px;
+        border-radius: 30px;
+        transition: all 0.3s ease;
+        line-height: 1;
+        color: #cda45e;
+        border: 2px solid #cda45e;
+        background-color: transparent;
+        margin: 5px;
+      }
+
+      .button:hover {
+        color: #fff;
+        background-color: #cda45e;
+        text-decoration: none;
+      }
+
+      .search-box {
+        padding: 15px 0;
+      }
+
+      .search-box input[type="text"] {
+        width: 100%;
+        max-width: 400px;
+        height: 45px;
+        border: 2px solid #cda45e;
+        border-radius: 30px;
+        font-size: 16px;
+        background-color: transparent;
+        color: #fff;
+        padding: 10px 20px 10px 45px;
+        transition: all 0.3s ease;
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%23cda45e" viewBox="0 0 16 16"><path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/></svg>');
+        background-repeat: no-repeat;
+        background-position: 15px center;
+      }
+
+      .search-box input[type="text"]:focus {
+        outline: none;
+        box-shadow: 0 0 10px rgba(205, 164, 94, 0.5);
+      }
+
+      .carousel {
+        margin-top: 70px;
+      }
+
+      .carousel-inner img {
+        width: 100%;
+        height: auto;
+        max-height: 700px;
+        object-fit: cover;
+      }
+
+      .carousel-caption {
+        bottom: 100px;
+        text-align: left;
+        padding: 20px;
+        background: rgba(0, 0, 0, 0.7);
+        border-left: 5px solid #cda45e;
+      }
+
+      .carousel-caption h3 {
+        font-size: 36px;
+        font-weight: 700;
+        color: #cda45e;
+      }
+
+      .carousel-caption p {
+        font-size: 18px;
+      }
+
+      .section-title {
+        color: #cda45e;
+        font-size: 28px;
+        font-weight: 700;
+        margin: 40px 0 20px;
+        padding-bottom: 15px;
+        border-bottom: 2px solid #cda45e;
+        display: inline-block;
+      }
+
+      .movie-card {
+        margin-bottom: 30px;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        border-radius: 5px;
+      }
+
+      .movie-card img {
+        width: 100%;
+        height: auto;
+        transition: transform 0.3s ease;
+        border-radius: 5px;
+      }
+
+      .movie-card:hover img {
+        transform: scale(1.05);
+      }
+
+      .movie-card .movie-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+        padding: 20px;
+        color: #fff;
+        transform: translateY(100%);
+        transition: transform 0.3s ease;
+      }
+
+      .movie-card:hover .movie-overlay {
+        transform: translateY(0);
+      }
+
+      .movie-card h4 {
+        color: #cda45e;
+        font-weight: 600;
+        margin-bottom: 5px;
+      }
+
+      .movie-card .rating {
+        color: #ffc107;
+      }
+
+      .cta-section {
+        background: rgba(205, 164, 94, 0.1);
+        padding: 80px 0;
+        margin: 60px 0;
+        text-align: center;
+        border-top: 1px solid rgba(205, 164, 94, 0.3);
+        border-bottom: 1px solid rgba(205, 164, 94, 0.3);
+      }
+
+      .cta-section h2 {
+        color: #cda45e;
+        font-size: 36px;
+        font-weight: 700;
+        margin-bottom: 20px;
+      }
+
+      .cta-section p {
+        font-size: 18px;
+        color: #aaa;
+        max-width: 800px;
+        margin: 0 auto 30px;
+        line-height: 1.6;
+      }
+
+      footer {
+        background: rgba(12, 11, 9, 0.9);
+        padding: 50px 0 20px;
+        color: #aaa;
+      }
+
+      .footer-logo {
+        color: #cda45e;
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 20px;
+      }
+
+      .social-icons a {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        border-radius: 50%;
+        background: rgba(205, 164, 94, 0.1);
+        color: #cda45e;
+        margin-right: 10px;
+        transition: all 0.3s ease;
+      }
+
+      .social-icons a:hover {
+        background: #cda45e;
+        color: #000;
+        transform: translateY(-3px);
+      }
+
+      .footer-links h4 {
+        color: #cda45e;
+        font-size: 18px;
+        margin-bottom: 20px;
+        font-weight: 600;
+      }
+
+      .footer-links ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-links li {
+        margin-bottom: 10px;
+      }
+
+      .footer-links a {
+        color: #aaa;
+        transition: color 0.3s ease;
+      }
+
+      .footer-links a:hover {
+        color: #cda45e;
+        text-decoration: none;
+      }
+
+      .copyright {
+        border-top: 1px solid rgba(205, 164, 94, 0.2);
+        padding-top: 20px;
+        margin-top: 30px;
+        text-align: center;
+        font-size: 14px;
+      }
+
+      /* Modal styles */
+      .modal-content {
+        background: #0c0b09;
+        border: 1px solid #cda45e;
+        border-radius: 5px;
+      }
+
+      .modal-header {
+        border-bottom: 1px solid #cda45e;
+      }
+
+      .modal-title {
+        color: #cda45e;
+      }
+
+      .close {
+        color: #cda45e;
+        opacity: 1;
+      }
+
+      .form-control {
+        background: transparent;
+        border: 1px solid #cda45e;
+        color: #fff;
+        border-radius: 30px;
+        padding: 12px 20px;
+        margin-bottom: 15px;
+      }
+
+      .form-control:focus {
+        box-shadow: 0 0 10px rgba(205, 164, 94, 0.5);
+        border-color: #cda45e;
+        background: transparent;
+        color: #fff;
+      }
+
+      .checkbox label {
+        color: #aaa;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 767px) {
+        .search-box {
+          padding: 10px 15px;
+        }
+
+        .carousel {
+          margin-top: 60px;
+        }
+
+        .carousel-caption {
+          bottom: 20px;
+          padding: 10px;
+        }
+
+        .carousel-caption h3 {
+          font-size: 24px;
+        }
+
+        .carousel-caption p {
+          font-size: 14px;
+        }
+
+        .section-title {
+          font-size: 24px;
+        }
+
+        .cta-section {
+          padding: 50px 0;
+        }
+
+        .cta-section h2 {
+          font-size: 28px;
+        }
+
+        footer {
+          text-align: center;
+        }
+
+        .footer-links {
+          margin-bottom: 30px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button
+            type="button"
+            class="navbar-toggle collapsed"
+            data-toggle="collapse"
+            data-target="#navbar-collapse"
+          >
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Prime Movies</a>
         </div>
-        <div class="modal-body">
-         <center> <p>login for prime</p></center>
-		  <form name="myform" onsubmit="validate()">
-		  <center>
-		  <input type="email" placeholder="email" name="fname" id="email" class="input1" required><br>
-		  <input type="password" placeholder="password" class="input1" required><br>
-		  </center>
-		  <input type="checkbox" value="ch">remeber me
-		   <center>
-          <input type="submit" id="submit" onclick="validateForm()" class="button" data-submit="modal">
-		  
-         </center>  
-        </div>
-        
-		 
-          </form>		 
+
+        <div class="collapse navbar-collapse" id="navbar-collapse">
+          <div class="navbar-form navbar-left search-box">
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Search movies..."
+              />
+            </div>
+          </div>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <a
+                href="#"
+                data-toggle="modal"
+                data-target="#loginModal"
+                class="button"
+                >Login</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                data-toggle="modal"
+                data-target="#signupModal"
+                class="button"
+                >Sign Up</a
+              >
+            </li>
+            <li>
+              <a href="#"><span class="glyphicon glyphicon-user"></span></a>
+            </li>
+          </ul>
         </div>
       </div>
-      
-    </div>
-  </div>
+    </nav>
 
-<!-- Modal -->
-     <div class="modal fade" id="myModal1" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">login</h4>
+    <!-- Hero Carousel -->
+    <div id="movieCarousel" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#movieCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#movieCarousel" data-slide-to="1"></li>
+        <li data-target="#movieCarousel" data-slide-to="2"></li>
+      </ol>
+
+      <!-- Slides -->
+      <div class="carousel-inner">
+        <div class="item active">
+          <img src="v1.jpg" alt="Joker" />
+          <div class="carousel-caption">
+            <h3>Joker</h3>
+            <p>
+              Forever alone in a crowd, failed comedian Arthur Fleck seeks
+              connection as he walks the streets of Gotham City.
+            </p>
+            <a href="#" class="button">Watch Now</a>
+          </div>
         </div>
-        <div class="modal-body">
-         <center> <p>singin</p></center>
-		  <form name="myform" onsubmit="validate()">
-		  <center>
-		  <input type="email" placeholder="email" name="fname" id="email" class="input1" required><br>
-		  <input type="password" placeholder="new password" class="input1" required>
-		  <input type="password" placeholder="confarm password" class="input1" required><br>
-		  </center>
-		  <input type="checkbox" value="ch">remeber me
-		   
-		   <center>
-          <input type="submit" id="submit" onclick="validateForm()" class="button" data-submit="modal">
-		 </center>  
-        </form>		 
+
+        <div class="item">
+          <img src="v2.jpg" alt="Captain America" />
+          <div class="carousel-caption">
+            <h3>Captain America</h3>
+            <p>
+              Steve Rogers, a rejected military soldier transforms into Captain
+              America after taking a dose of a "Super-Soldier serum".
+            </p>
+            <a href="#" class="button">Watch Now</a>
+          </div>
         </div>
-		</div>
-      </div>
-      
-    </div>
-  </div>
 
-
-<div id="myCarousel" class="carousel slide" data-ride="carousel">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-      <li data-target="#myCarousel" data-slide-to="1" class="active"></li>
-      <li data-target="#myCarousel" data-slide-to="2"></li>
-      <li data-target="#myCarousel" data-slide-to="3"></li>
-    </ol>
-
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner" role="listbox">
-      <div class="item active">
-        <img  src= "joker.jpg" alt="New York" width="100%" height="700px">
-        <div class="carousel-caption">
-         
-        </div>      
+        <div class="item">
+          <img src="v5.jpg" alt="Inception" />
+          <div class="carousel-caption">
+            <h3>Inception</h3>
+            <p>
+              A thief who steals corporate secrets through the use of
+              dream-sharing technology is given the inverse task.
+            </p>
+            <a href="#" class="button">Watch Now</a>
+          </div>
+        </div>
       </div>
 
-      <div class="item">
-        <img src= "ca.jpg" alt="Chicago" width="100%" height="700px">
-        <div class="carousel-caption">
-          
-        </div>      
-      </div>
-    
-      <div class="item">
-        <img src="i.jpg" alt="Los Angeles" width="100%" height="100%">
-        <div class="carousel-caption">
-         
-        </div>      
-      </div>
+      <!-- Controls -->
+      <a class="left carousel-control" href="#movieCarousel" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+      </a>
+      <a class="right carousel-control" href="#movieCarousel" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+      </a>
     </div>
 
-    <!-- Left and right controls -->
-    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-      <span class="glyphicon glyphicon-chevron-left"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-      <span class="glyphicon glyphicon-chevron-right"></span>
-      <span class="sr-only">Next</span>
-    </a>
-</div>
-<div class="container">
-     <div class="RE">
-	 <div class="er">
-	       <H4 class="hh">Recommended</H4>
-		   </div>
-           
-	        <input type="button" value="latest movies" class="button">
-	        <input type="button" value="trending" class="button">
-	        <input type="button" value="top IMDB" class="button">
-	     
-	 </div>
-     <div class="col-md-3 col-sm-6 col-xs-12">
-   <a href="movieopen.html"  target="_blank"><img width="200" height="300" src="v1.jpg"></a> 
-	 <p>captain america</p>
-	 <br>
-	 </div>
-	 <div class="col-md-3 col-sm-6 col-xs-12">
-	 <img width="200" height="300" src="v2.jpg" onclick="unn()";>
-	 <p>iron man</p>
-	 <br>
-	 </div>
-	 <div class="col-md-3 col-sm-6 col-xs-12">
-      <a href="movieopen.html"  target="_blank"><img  width="200" height="300" src="v3.jpg">
-	 <p>camtain</p>
-	 <br>
-	 </div>
-	  <div class="col-md-3 col-sm-6 col-xs-12">
-      <a href="movieopen1.html"  target="_blank"><img  width="200" height="300" src="v4.jpg">
-	 <p>sapider man</p>
-	 <br>
-	 </div>
-	  <div class="col-md-3 col-sm-6 col-xs-12">
-     <img  width="200" height="300" src= "v5.jpg" onmouseover="unn()";>
-	 <p>1937 Ford V8</p>
-	 <br>
-	 </div>
-	  <div class="col-md-3 col-sm-6 col-xs-12">
-     <img  width="200" height="300" src= "v6.jpg">
-	 <p>1933 Graham Blue Streak</p>
-	 <br>
-	 </div>
-	  <div class="col-md-3 col-sm-6 col-xs-12">
-     <img  width="200" height="300" src= "v7.jpg">
-	 <p>1933 Sunbeam</p>
-	 <br>
-	 </div>
-	  <div class="col-md-3 col-sm-6 col-xs-12">
-     <img  width="200" height="300" src= "v8.jpg">
-	 <p>1947 MG TC</p>
-	 <br>
-	 </div>
-	  <div class="col-md-3 col-sm-6 col-xs-12">
-     <img  width="200" height="300" src= "v9.jpg">
-	 <p onclick="my()">1982 Rolls Royce</p>
-	 <br>
-	 </div>
-	  <div class="col-md-3 col-sm-6 col-xs-12">
-     <img width="200" height="300" src= "v10.jpg">
-	 <p>1947 Lincoln</p>
-	 <br>
-	 </div>
-	  <div class="col-md-3 col-sm-6 col-xs-12">
-     <img width="200" height="300" src="v10.jfif" src= "v10.jfif">
-	 <p>Motilal Nehru’s 1928 Lanchester St. 8</p>
-	 <br>
-	 </div>
-	  <div class="col-md-3 col-sm-6 col-xs-12">
-     <img width="200" height="300" src= "v11.jfif">
-	 <p>Motilal Nehru’s 1928 Lanchester St.8</p>
-	 <br>
-	 </div>
-	 
-</div>
-<div class ="container">
-<div>
-     <h1 class="h11">There’s even more to watch.</h1>
-	<p class="h12" id="demo"> Netflix has an extensive library of feature films,
-	documentaries, TV shows, anime, award-winning Netflix originals and more.
-	Watch as much as you want, anytime you want.<p>
-	<div class="b">
-	<input type="button" value="join now" onclick="onfunction()" class="button">
-</div>
-	
-</div>
-</div>
+    <!-- Main Content -->
+    <div class="container">
+      <!-- Recommended Section -->
+      <div class="row">
+        <div class="col-xs-12">
+          <h2 class="section-title">Recommended Movies</h2>
+          <div class="btn-group">
+            <button type="button" class="button active">Latest Releases</button>
+            <button type="button" class="button">Trending Now</button>
+            <button type="button" class="button">Top Rated</button>
+          </div>
+        </div>
+      </div>
 
-<footer>
-<hr class="new1">
-<div class="container">
-<div class="col-sm-3">
-<p class="pcl" style="color:#cda45e"><b>movie</b><p>
-<p style="color:#cda45e">online movies<p>
-    <i class="fa fa-facebook-official w3-hover-opacity"></i>
-    <i class="fa fa-instagram w3-hover-opacity"></i>
-    <i class="fa fa-snapchat w3-hover-opacity"></i>
-    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
-    <i class="fa fa-twitter w3-hover-opacity"></i>
-    <i class="fa fa-linkedin w3-hover-opacity"></i>
-	<hr class="new1"><p>web page by ssu<p>
-</div>
-<div class="col-sm-3">
-<p class="pcl"><b>service</b></p><p><br>download<br>watch<br>4k movies<br>web series<br></p>
-</div>
-<div class="col-sm-3">
-<p class="pcl"><b>information</b></p><p><br>secure<br>contact<br>privacy policy<br>terms of ruls<br></p>
-</div>
-<div class="col-sm-3">
-<p class="pcl"><b>adress</b></p><p><br>abc-cba<br>jr union 422134<br>999-777-111<br>tasty@email.com<br></p>
-</hr>
-</div>
-<center>
-</div>
-</div>
-</footer>
+      <div class="row">
+        <!-- Movie Cards -->
+        <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+          <div class="movie-card">
+            <a href="movieopen.html" target="_blank">
+              <img src="v5.jpg" alt="Captain America" />
+              <div class="movie-overlay">
+                <h4>Captain America</h4>
+                <div class="rating">
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star-half-o checked"></span>
+                  <span>4.5</span>
+                </div>
+                <p>Action, Adventure</p>
+              </div>
+            </a>
+          </div>
+        </div>
 
+        <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+          <div class="movie-card">
+            <a href="#" onclick="showUnavailable()">
+              <img src="v7.jpg" alt="Iron Man" />
+              <div class="movie-overlay">
+                <h4>Iron Man</h4>
+                <div class="rating">
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star-o"></span>
+                  <span>4.0</span>
+                </div>
+                <p>Action, Sci-Fi</p>
+              </div>
+            </a>
+          </div>
+        </div>
 
-</body>
+        <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+          <div class="movie-card">
+            <a href="movieopen.html" target="_blank">
+              <img src="v8.jfif" alt="The Avengers" />
+              <div class="movie-overlay">
+                <h4>The Avengers</h4>
+                <div class="rating">
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span>5.0</span>
+                </div>
+                <p>Action, Adventure</p>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+          <div class="movie-card">
+            <a href="movieopen1.html" target="_blank">
+              <img
+                src="https://via.placeholder.com/300x450/0c0b09/cda45e?text=Spider+Man"
+                alt="Spider Man"
+              />
+              <div class="movie-overlay">
+                <h4>Spider Man</h4>
+                <div class="rating">
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star-o"></span>
+                  <span>4.0</span>
+                </div>
+                <p>Action, Adventure</p>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+          <div class="movie-card">
+            <a href="#" onmouseover="showUnavailable()">
+              <img
+                src="https://via.placeholder.com/300x450/0c0b09/cda45e?text=Black+Panther"
+                alt="Black Panther"
+              />
+              <div class="movie-overlay">
+                <h4>Black Panther</h4>
+                <div class="rating">
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span>5.0</span>
+                </div>
+                <p>Action, Adventure</p>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+          <div class="movie-card">
+            <a href="#">
+              <img
+                src="https://via.placeholder.com/300x450/0c0b09/cda45e?text=Thor"
+                alt="Thor"
+              />
+              <div class="movie-overlay">
+                <h4>Thor</h4>
+                <div class="rating">
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star-half-o checked"></span>
+                  <span>4.5</span>
+                </div>
+                <p>Action, Fantasy</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- More Movies Section -->
+      <div class="row">
+        <div class="col-xs-12">
+          <h2 class="section-title">Popular Movies</h2>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+          <div class="movie-card">
+            <a href="#">
+              <img
+                src="https://via.placeholder.com/300x450/0c0b09/cda45e?text=Wonder+Woman"
+                alt="Wonder Woman"
+              />
+              <div class="movie-overlay">
+                <h4>Wonder Woman</h4>
+                <div class="rating">
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star-o"></span>
+                  <span>4.0</span>
+                </div>
+                <p>Action, Adventure</p>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+          <div class="movie-card">
+            <a href="#">
+              <img
+                src="https://via.placeholder.com/300x450/0c0b09/cda45e?text=Jurassic+Park"
+                alt="Jurassic Park"
+              />
+              <div class="movie-overlay">
+                <h4>Jurassic Park</h4>
+                <div class="rating">
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span>5.0</span>
+                </div>
+                <p>Adventure, Sci-Fi</p>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+          <div class="movie-card">
+            <a href="#">
+              <img
+                src="https://via.placeholder.com/300x450/0c0b09/cda45e?text=The+Dark+Knight"
+                alt="The Dark Knight"
+              />
+              <div class="movie-overlay">
+                <h4>The Dark Knight</h4>
+                <div class="rating">
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span>5.0</span>
+                </div>
+                <p>Action, Crime</p>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+          <div class="movie-card">
+            <a href="#" onclick="showUnavailable()">
+              <img
+                src="https://via.placeholder.com/300x450/0c0b09/cda45e?text=Interstellar"
+                alt="Interstellar"
+              />
+              <div class="movie-overlay">
+                <h4>Interstellar</h4>
+                <div class="rating">
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star-half-o checked"></span>
+                  <span>4.5</span>
+                </div>
+                <p>Adventure, Sci-Fi</p>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+          <div class="movie-card">
+            <a href="#">
+              <img
+                src="https://via.placeholder.com/300x450/0c0b09/cda45e?text=The+Matrix"
+                alt="The Matrix"
+              />
+              <div class="movie-overlay">
+                <h4>The Matrix</h4>
+                <div class="rating">
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span>5.0</span>
+                </div>
+                <p>Action, Sci-Fi</p>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+          <div class="movie-card">
+            <a href="#">
+              <img
+                src="https://via.placeholder.com/300x450/0c0b09/cda45e?text=Inception"
+                alt="Inception"
+              />
+              <div class="movie-overlay">
+                <h4>Inception</h4>
+                <div class="rating">
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span>5.0</span>
+                </div>
+                <p>Action, Adventure</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="container-fluid cta-section">
+      <div class="container">
+        <h2>There's even more to watch</h2>
+        <p id="cta-text">
+          Prime Movies has an extensive library of feature films, documentaries,
+          TV shows, anime, award-winning originals and more. Watch as much as
+          you want, anytime you want.
+        </p>
+        <a href="#" class="button" onclick="changeTextColor()">Join Now</a>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6 col-md-3">
+            <div class="footer-logo">Prime Movies</div>
+            <p>
+              Your ultimate destination for unlimited streaming of movies and TV
+              shows.
+            </p>
+            <div class="social-icons">
+              <a href="#"><i class="fa fa-facebook"></i></a>
+              <a href="#"><i class="fa fa-twitter"></i></a>
+              <a href="#"><i class="fa fa-instagram"></i></a>
+              <a href="#"><i class="fa fa-youtube"></i></a>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-md-3">
+            <div class="footer-links">
+              <h4>Services</h4>
+              <ul>
+                <li><a href="#">Streaming</a></li>
+                <li><a href="#">Download</a></li>
+                <li><a href="#">4K Movies</a></li>
+                <li><a href="#">TV Series</a></li>
+                <li><a href="#">Kids</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-md-3">
+            <div class="footer-links">
+              <h4>Information</h4>
+              <ul>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+                <li><a href="#">FAQ</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-md-3">
+            <div class="footer-links">
+              <h4>Contact Us</h4>
+              <address>
+                <p>
+                  <i class="fa fa-map-marker"></i> 123 Movie Street, Hollywood,
+                  CA
+                </p>
+                <p><i class="fa fa-phone"></i> (123) 456-7890</p>
+                <p><i class="fa fa-envelope"></i> info@primemovies.com</p>
+              </address>
+            </div>
+          </div>
+        </div>
+
+        <div class="copyright">
+          <p>&copy; 2023 Prime Movies. All Rights Reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div
+      class="modal fade"
+      id="loginModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="loginModalLabel"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title" id="loginModalLabel">
+              Login to Prime Movies
+            </h4>
+          </div>
+          <div class="modal-body">
+            <form id="loginForm" onsubmit="return validateLoginForm()">
+              <div class="form-group">
+                <input
+                  type="email"
+                  class="form-control"
+                  id="loginEmail"
+                  placeholder="Email"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="password"
+                  class="form-control"
+                  id="loginPassword"
+                  placeholder="Password"
+                  required
+                />
+              </div>
+              <div class="checkbox">
+                <label> <input type="checkbox" /> Remember me </label>
+              </div>
+              <button type="submit" class="button btn-block">Login</button>
+            </form>
+            <div class="text-center" style="margin-top: 15px">
+              <a
+                href="#"
+                data-dismiss="modal"
+                data-toggle="modal"
+                data-target="#signupModal"
+                >Don't have an account? Sign up</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div
+      class="modal fade"
+      id="signupModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="signupModalLabel"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title" id="signupModalLabel">Create an Account</h4>
+          </div>
+          <div class="modal-body">
+            <form id="signupForm" onsubmit="return validateSignupForm()">
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="signupName"
+                  placeholder="Full Name"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="email"
+                  class="form-control"
+                  id="signupEmail"
+                  placeholder="Email"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="password"
+                  class="form-control"
+                  id="signupPassword"
+                  placeholder="Password"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="password"
+                  class="form-control"
+                  id="signupConfirmPassword"
+                  placeholder="Confirm Password"
+                  required
+                />
+              </div>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" required /> I agree to the
+                  <a href="#">Terms of Service</a>
+                </label>
+              </div>
+              <button type="submit" class="button btn-block">Sign Up</button>
+            </form>
+            <div class="text-center" style="margin-top: 15px">
+              <a
+                href="#"
+                data-dismiss="modal"
+                data-toggle="modal"
+                data-target="#loginModal"
+                >Already have an account? Login</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Cookie functions
+      function setCookie(cname, cvalue, exdays) {
+        const d = new Date();
+        d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
+        let expires = "expires=" + d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+      }
+
+      function getCookie(cname) {
+        let name = cname + "=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(";");
+        for (let i = 0; i < ca.length; i++) {
+          let c = ca[i];
+          while (c.charAt(0) == " ") {
+            c = c.substring(1);
+          }
+          if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+          }
+        }
+        return "";
+      }
+
+      // Check cookie on page load
+      function checkCookie() {
+        let user = getCookie("username");
+        if (user != "") {
+          // Welcome back message can be shown in a more elegant way
+          console.log("Welcome back " + user);
+        } else {
+          setTimeout(function () {
+            user = prompt(
+              "Please enter your name to personalize your experience:",
+              ""
+            );
+            if (user != "" && user != null) {
+              setCookie("username", user, 30);
+            }
+          }, 2000);
+        }
+      }
+
+      // Form validation
+      function validateLoginForm() {
+        let email = document.getElementById("loginEmail").value;
+        let password = document.getElementById("loginPassword").value;
+
+        if (email == "" || password == "") {
+          alert("Please fill in all fields");
+          return false;
+        }
+
+        // Here you would typically validate with server
+        alert("Login successful!");
+        return true;
+      }
+
+      function validateSignupForm() {
+        let name = document.getElementById("signupName").value;
+        let email = document.getElementById("signupEmail").value;
+        let password = document.getElementById("signupPassword").value;
+        let confirmPassword = document.getElementById(
+          "signupConfirmPassword"
+        ).value;
+
+        if (
+          name == "" ||
+          email == "" ||
+          password == "" ||
+          confirmPassword == ""
+        ) {
+          alert("Please fill in all fields");
+          return false;
+        }
+
+        if (password != confirmPassword) {
+          alert("Passwords do not match");
+          return false;
+        }
+
+        // Here you would typically send data to server
+        alert("Account created successfully!");
+        return true;
+      }
+
+      // Other utility functions
+      function showUnavailable() {
+        alert("This movie is currently unavailable. Please check back later.");
+        return false;
+      }
+
+      function changeTextColor() {
+        document.getElementById("cta-text").style.color = "#cda45e";
+      }
+
+      function requireLogin() {
+        alert("Please login to access this feature");
+        return false;
+      }
+
+      // Initialize on page load
+      window.onload = function () {
+        checkCookie();
+
+        // Set active class on carousel indicators
+        $(".carousel").carousel({
+          interval: 5000,
+        });
+
+        // Initialize tooltips
+        $('[data-toggle="tooltip"]').tooltip();
+      };
+    </script>
+  </body>
 </html>
